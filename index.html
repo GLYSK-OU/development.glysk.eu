@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLYSK — Development Center &amp; Portfolio</title>
+  <meta name="theme-color" content="#F6F3EE">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&family=Big+Shoulders+Display:wght@800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F6F3EE;
+      --ink: #111111;
+      --ink-70: rgba(17,17,17,0.70);
+      --ink-55: rgba(17,17,17,0.55);
+      --ink-45: rgba(17,17,17,0.45);
+      --ink-40: rgba(17,17,17,0.40);
+      --ink-15: rgba(17,17,17,0.15);
+      --ink-10: rgba(17,17,17,0.10);
+      --anglerbook: #16543C;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      transition: background .2s ease, color .2s ease;
+    }
+    .dc-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 2.25rem; }
+    .dc-eyebrow svg { display: block; flex: none; }
+    .dc-eyebrow .label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.30em;
+      text-transform: uppercase; color: var(--ink-45);
+    }
+    .dc-headline {
+      font-size: clamp(28px, 4.4vw, 46px); font-weight: 200; letter-spacing: -0.01em;
+      line-height: 1.12; max-width: 16ch; margin-bottom: 1.75rem;
+    }
+    .dc-lede {
+      font-size: 16px; font-weight: 300; line-height: 1.8;
+      color: var(--ink-70); max-width: 58ch;
+    }
+    .dc-lede strong { font-weight: 500; color: var(--ink); }
+
+    .dev-center { max-width: 1040px; margin: 0 auto; padding: 7rem 1.5rem 5rem; }
+    .dc-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+      margin-top: 4.5rem; border-top: 0.5px solid var(--ink-15);
+    }
+    .dc-cell { padding: 2.5rem 2rem 2.75rem 0; border-bottom: 0.5px solid var(--ink-15); }
+    .dc-cell + .dc-cell { padding-left: 2rem; border-left: 0.5px solid var(--ink-10); }
+    .dc-index {
+      font-size: 10px; font-weight: 400; letter-spacing: 0.24em;
+      color: var(--ink-40); margin-bottom: 1.5rem;
+    }
+    .dc-cell h3 {
+      font-size: 16px; font-weight: 400; letter-spacing: 0.01em;
+      line-height: 1.35; margin-bottom: 0.9rem;
+    }
+    .dc-cell p { font-size: 14px; font-weight: 300; line-height: 1.72; color: var(--ink-55); }
+
+    .dc-process {
+      margin-top: 4rem; display: flex; align-items: center; justify-content: center;
+      gap: 1.1rem; flex-wrap: wrap;
+    }
+    .dc-process .hair { height: 0.5px; width: 40px; background: var(--ink-15); }
+    .dc-process .step {
+      font-size: 10px; font-weight: 400; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--ink-45);
+    }
+    .dc-process .dot { color: var(--ink-40); font-size: 10px; letter-spacing: 0.22em; }
+    .dc-close {
+      margin-top: 3.5rem; text-align: center; font-size: 15px; font-weight: 300;
+      line-height: 1.75; color: var(--ink-70); max-width: 52ch; margin-left: auto; margin-right: auto;
+    }
+    .dc-close strong { font-weight: 500; color: var(--ink); }
+
+    .portfolio { max-width: 1040px; margin: 0 auto; padding: 5rem 1.5rem 7rem; border-top: 0.5px solid var(--ink-15); }
+
+    .pf-card {
+      margin-top: 3.5rem;
+      border: 0.5px solid var(--ink-15);
+      padding: 3rem 3rem 2.75rem;
+      max-width: 680px;
+    }
+    .pf-head { display: flex; align-items: center; gap: 18px; margin-bottom: 1.75rem; }
+    .pf-logo { flex: none; display: block; height: 58px; width: auto; }
+    .pf-name { font-size: 24px; font-weight: 300; letter-spacing: 0.02em; line-height: 1; }
+    .pf-descriptor { font-size: 16px; font-weight: 300; line-height: 1.55; color: var(--ink-70); margin-bottom: 1rem; }
+    .pf-meta {
+      font-size: 10px; font-weight: 400; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--ink-45); margin-bottom: 1.9rem;
+    }
+    .pf-text { font-size: 14px; font-weight: 300; line-height: 1.75; color: var(--ink-55); margin-bottom: 2rem; }
+    .pf-tech {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.12em; color: var(--ink-45);
+      line-height: 1.9; padding-top: 1.6rem; border-top: 0.5px solid var(--ink-10); margin-bottom: 2rem;
+    }
+    .pf-link {
+      display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); text-decoration: none;
+      border-bottom: 0.5px solid var(--ink); padding-bottom: 3px; transition: opacity 0.2s ease;
+    }
+    .pf-link:hover { opacity: 0.55; }
+
+    @media (max-width: 780px) {
+      .dev-center { padding: 4.5rem 1.5rem 3.5rem; }
+      .portfolio  { padding: 3.5rem 1.5rem 4.5rem; }
+      .dc-grid { grid-template-columns: 1fr; margin-top: 3rem; }
+      .dc-cell { padding: 2rem 0 2.25rem 0 !important; border-left: none !important; }
+      .dc-headline { max-width: 100%; }
+      .pf-card { padding: 2.25rem 1.75rem; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/theme.css">
+  <script src="assets/theme.js"></script>
+</head>
+<body>
+
+  <!-- ============ DEVELOPMENT CENTER ============ -->
+  <section class="dev-center">
+    <div class="dc-eyebrow">
+      <svg width="22" height="22" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="44" width="14" height="26" rx="3" stroke="currentColor" stroke-width="1.6" opacity="0.44"/>
+        <rect x="30" y="30" width="14" height="40" rx="3" stroke="currentColor" stroke-width="1.6" opacity="0.66"/>
+        <rect x="50" y="14" width="14" height="56" rx="3" stroke="currentColor" stroke-width="1.6" opacity="0.88"/>
+      </svg>
+      <span class="label">Development Center</span>
+    </div>
+
+    <h2 class="dc-headline">Where strategy becomes software.</h2>
+
+    <p class="dc-lede">The roadmap is only half the work. GLYSK's Development Center takes validated strategy and turns it into working product — <strong>designed, engineered, and shipped by the same people who set the direction.</strong> No handoff to a separate vendor, no translation loss between the thinking and the build.</p>
+
+    <div class="dc-grid">
+      <div class="dc-cell">
+        <div class="dc-index">01</div>
+        <h3>Product &amp; Application Development</h3>
+        <p>Web, mobile, and internal platforms taken from prototype to production. Interfaces people actually use, engineered to hold up under real load, real data, and real users.</p>
+      </div>
+      <div class="dc-cell">
+        <div class="dc-index">02</div>
+        <h3>AI &amp; Data Engineering</h3>
+        <p>Language models, retrieval, and data pipelines put to work inside the business — not as demonstrations, but as features that operate reliably in regulated, production environments.</p>
+      </div>
+      <div class="dc-cell">
+        <div class="dc-index">03</div>
+        <h3>Integration &amp; Modernisation</h3>
+        <p>New capability delivered into the systems you already run. Clean APIs, legacy integration, and the unglamorous engineering that moves a pilot out of the lab and into production.</p>
+      </div>
+    </div>
+
+    <div class="dc-process">
+      <span class="hair"></span>
+      <span class="step">Discovery</span><span class="dot">·</span>
+      <span class="step">Architecture</span><span class="dot">·</span>
+      <span class="step">Build</span><span class="dot">·</span>
+      <span class="step">Deploy</span><span class="dot">·</span>
+      <span class="step">Handover</span>
+      <span class="hair"></span>
+    </div>
+
+    <p class="dc-close">One team, from the first diagnostic to the deployed system. <strong>That continuity is the point</strong> — and the reason the work actually ships.</p>
+  </section>
+
+  <!-- ============ PORTFOLIO ============ -->
+  <section class="portfolio">
+    <div class="dc-eyebrow">
+      <svg width="22" height="22" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="44" width="14" height="26" rx="3" stroke="currentColor" stroke-width="1.6" opacity="0.44"/>
+        <rect x="30" y="30" width="14" height="40" rx="3" stroke="currentColor" stroke-width="1.6" opacity="0.66"/>
+        <rect x="50" y="14" width="14" height="56" rx="3" stroke="currentColor" stroke-width="1.6" opacity="0.88"/>
+      </svg>
+      <span class="label">Portfolio</span>
+    </div>
+
+    <h2 class="dc-headline">Built, shipped, in people's hands.</h2>
+
+    <p class="dc-lede">The Development Center builds for clients — and for GLYSK. <strong>AnglerBook is our own product</strong>: a native iPhone and Apple Watch app, taken from first sketch to the App Store in-house. It is the clearest proof of what the team can ship.</p>
+
+    <div class="pf-card">
+      <div class="pf-head">
+        <!-- AnglerBook crest — exact mark from anglerbook.fun -->
+        <svg class="pf-logo" viewBox="0 0 200 240" role="img" aria-label="AnglerBook crest — an AB monogram over water on a dark-green shield" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="shieldG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#16543C"/>
+              <stop offset="1" stop-color="#0A2C20"/>
+            </linearGradient>
+            <clipPath id="shieldClip">
+              <path d="M40,24 H160 a16,16 0 0 1 16,16 V118 C176,168 150,196 100,214 C50,196 24,168 24,118 V40 a16,16 0 0 1 16,-16 Z"/>
+            </clipPath>
+          </defs>
+          <path d="M40,24 H160 a16,16 0 0 1 16,16 V118 C176,168 150,196 100,214 C50,196 24,168 24,118 V40 a16,16 0 0 1 16,-16 Z" fill="url(#shieldG)"/>
+          <g clip-path="url(#shieldClip)">
+            <g class="waterlines">
+              <path d="M6,150 q30,-12 60,0 t60,0 t60,0 t60,0" fill="none" stroke="#5E7C8A" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+              <path d="M6,168 q30,-12 60,0 t60,0 t60,0 t60,0" fill="none" stroke="#5E7C8A" stroke-width="5" stroke-linecap="round" opacity="0.40"/>
+              <path d="M6,134 q30,-10 60,0 t60,0 t60,0 t60,0" fill="none" stroke="#F7F2E6" stroke-width="3" stroke-linecap="round" opacity="0.50"/>
+              <path d="M6,186 q30,-12 60,0 t60,0 t60,0 t60,0" fill="none" stroke="#5E7C8A" stroke-width="5" stroke-linecap="round" opacity="0.26"/>
+            </g>
+          </g>
+          <path d="M46,32 H154 a10,10 0 0 1 10,10 V116 C164,160 142,185 100,201 C58,185 36,160 36,116 V42 a10,10 0 0 1 10,-10 Z" fill="none" stroke="#F7F2E6" stroke-width="1.5" opacity="0.4"/>
+          <text x="100" y="118" text-anchor="middle" fill="#F7F2E6" font-size="92" font-weight="800" font-family="'Big Shoulders Display', sans-serif" letter-spacing="-4">AB</text>
+        </svg>
+        <span class="pf-name">AnglerBook</span>
+      </div>
+
+      <p class="pf-descriptor">A career-long log for fly fishing — every session, fly and fish, mapped and remembered.</p>
+      <div class="pf-meta">iPhone · Apple Watch &nbsp;—&nbsp; In beta · Coming to the App Store</div>
+
+      <p class="pf-text">A wrist-first capture flow lets anglers start and mark a session without taking the phone out. GPS sessions map the water, a living gear catalog tracks the rods, lines and flies that worked, and waterside weather plus Apple Fitness data fold into each record automatically. Live Activities keep an active session on the Lock Screen and in the Dynamic Island, and optional iCloud sync keeps the whole log private and consistent across devices — with a subscription tier built on StoreKit.</p>
+
+      <div class="pf-tech">SwiftUI · watchOS · MapKit · HealthKit · WeatherKit · CloudKit · StoreKit · Live Activities</div>
+
+      <a class="pf-link" href="https://www.anglerbook.fun" target="_blank" rel="noopener">anglerbook.fun &nbsp;↗</a>
+    </div>
+  </section>
+
+</body>
+</html>

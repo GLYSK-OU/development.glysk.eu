@@ -1,0 +1,35 @@
+/* GLYSK — light / dark / auto theming + toggle control (pairs with assets/theme.js) */
+:root { color-scheme: light; }
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper:  #111111;
+  --ink:    #F3F0EA;
+  --ink-70: rgba(243,240,234,0.72);
+  --ink-55: rgba(243,240,234,0.60);
+  --ink-45: rgba(243,240,234,0.48);
+  --ink-40: rgba(243,240,234,0.42);
+  --ink-15: rgba(243,240,234,0.16);
+  --ink-10: rgba(243,240,234,0.10);
+}
+.theme-toggle {
+  position: fixed; top: 16px; right: 16px; z-index: 60;
+  display: inline-flex; align-items: center; gap: 8px;
+  margin: 0; padding: 8px 13px; border-radius: 999px;
+  background: var(--paper, #F6F3EE); color: var(--ink, #111111);
+  border: 1px solid var(--ink-15, rgba(17,17,17,0.15));
+  font-family: 'Jost', system-ui, -apple-system, sans-serif;
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em;
+  text-transform: uppercase; cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  transition: border-color .2s ease, color .2s ease, background .2s ease;
+}
+.theme-toggle:hover { border-color: var(--ink-40, rgba(17,17,17,0.40)); }
+.theme-toggle:focus-visible { outline: 2px solid var(--ink, #111111); outline-offset: 2px; }
+.theme-toggle svg { width: 15px; height: 15px; flex: none; }
+.theme-toggle span { line-height: 1; }
+@media (max-width: 560px) {
+  .theme-toggle { top: 12px; right: 12px; padding: 8px; }
+  .theme-toggle span { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .theme-toggle { transition: none; } }
