@@ -12,7 +12,7 @@
   --ink-10: rgba(243,240,234,0.10);
 }
 .theme-toggle {
-  position: fixed; top: 16px; right: 16px; z-index: 60;
+  position: relative; z-index: 1;
   display: inline-flex; align-items: center; gap: 8px;
   margin: 0; padding: 8px 13px; border-radius: 999px;
   background: var(--paper, #F6F3EE); color: var(--ink, #111111);
@@ -33,3 +33,6 @@
   .theme-toggle span { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .theme-toggle { transition: none; } }
+
+/* floating variant — used only when the button is injected (no #theme-btn in the page) */
+.theme-toggle--floating { position: fixed; top: 16px; right: 16px; z-index: 60; }

@@ -34,16 +34,21 @@
     btn.title = 'Theme: ' + LABELS[m];
   }
   function init() {
-    if (document.querySelector('.theme-toggle')) return;
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'theme-toggle';
+    var btn = document.getElementById('theme-btn');   // in-header button (advisory/holdings/development)
+    var injected = false;
+    if (!btn) {
+      if (document.querySelector('.theme-toggle')) return;
+      btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'theme-toggle theme-toggle--floating';
+      injected = true;
+    }
     render(btn, getMode());
     btn.addEventListener('click', function () {
       var m = MODES[(MODES.indexOf(getMode()) + 1) % MODES.length];
       setMode(m); apply(m); render(btn, m);
     });
-    document.body.appendChild(btn);
+    if (injected) document.body.appendChild(btn);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();

@@ -42,7 +42,7 @@
     }
     .dc-lede strong { font-weight: 500; color: var(--ink); }
 
-    .dev-center { max-width: 1040px; margin: 0 auto; padding: 7rem 1.5rem 5rem; }
+    .dev-center { max-width: 1040px; margin: 0 auto; padding: 4rem 1.5rem 5rem; }
     .dc-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
       margin-top: 4.5rem; border-top: 0.5px solid var(--ink-15);
@@ -111,14 +111,62 @@
       .dc-headline { max-width: 100%; }
       .pf-card { padding: 2.25rem 1.75rem; }
     }
+  
+    /* ---- Site header / cross-site nav ---- */
+    .site-nav {
+      position: sticky; top: 0; z-index: 50;
+      display: flex; align-items: center; gap: 2rem;
+      max-width: 1040px; margin: 0 auto; padding: 1.15rem 1.5rem;
+      background: var(--paper);
+    }
+    .site-nav::after {
+      content: ""; position: absolute; left: 1.5rem; right: 1.5rem; bottom: 0;
+      height: 0.5px; background: var(--ink-15);
+    }
+    .nav-logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+    .nav-logo-mark { width: 22px; height: 22px; flex: none; }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1.05; }
+    .nav-logo-name { font-size: 13px; font-weight: 300; letter-spacing: 0.34em; text-transform: uppercase; }
+    .nav-logo-entity { font-size: 8.5px; font-weight: 300; letter-spacing: 0.42em; text-transform: uppercase; color: var(--ink-45); margin-top: 3px; }
+    .nav-links { list-style: none; display: flex; align-items: center; gap: 1.75rem; margin: 0 0 0 auto; padding: 0; }
+    .nav-links a { font-size: 11px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-55); text-decoration: none; transition: color .2s ease; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    @media (max-width: 560px) {
+      .site-nav { gap: 1rem; padding: 0.9rem 1.25rem; }
+      .nav-links { gap: 1.1rem; }
+      .nav-logo-entity { display: none; }
+    }
   </style>
   <link rel="stylesheet" href="assets/theme.css">
   <script src="assets/theme.js"></script>
 </head>
 <body>
 
+  <!-- ============ SITE HEADER / CROSS-SITE NAV ============ -->
+  <nav class="site-nav" id="nav">
+    <a href="#top" class="nav-logo" aria-label="GLYSK Development">
+      <svg class="nav-logo-mark" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="10" y="44" width="14" height="26" rx="3" stroke="currentColor" stroke-width="1.6" opacity="0.44"/>
+        <rect x="30" y="30" width="14" height="40" rx="3" stroke="currentColor" stroke-width="1.6" opacity="0.66"/>
+        <rect x="50" y="14" width="14" height="56" rx="3" stroke="currentColor" stroke-width="1.6" opacity="0.88"/>
+      </svg>
+      <span class="nav-logo-text">
+        <span class="nav-logo-name">GLYSK</span>
+        <span class="nav-logo-entity">Development</span>
+      </span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="https://advisory.glysk.eu" target="_blank" rel="noopener">Advisory &#8599;</a></li>
+      <li><a href="https://holdings.glysk.eu" target="_blank" rel="noopener">Holdings &#8599;</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="theme-btn" type="button" aria-label="Theme"></button>
+    </div>
+  </nav>
+
   <!-- ============ DEVELOPMENT CENTER ============ -->
-  <section class="dev-center">
+  <section class="dev-center" id="top">
     <div class="dc-eyebrow">
       <svg width="22" height="22" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="10" y="44" width="14" height="26" rx="3" stroke="currentColor" stroke-width="1.6" opacity="0.44"/>
